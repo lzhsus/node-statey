@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ajax请求，Node。js搭建的后台服务器</h1>
+    <button>请求数据</button>
+    <div id="msg">
+        
+    </div>
+</body>
+</html>
+<script src="jquery-1.12.4.js"></script>
+<script>
+
+    function getData(){
+        console.log(11)
+        $.ajax({
+            url:'http://127.0.0.1:3000',
+            type:'GET',
+            data:'',
+            dataType:'json',
+            success:function(data){
+                console.log('成功')
+                console.log(data)
+                var str;
+                for(var i=0;i<data.length;i++){
+                    str+='<h2>姓名：'+data[i].name+'</h2><h2>年龄：'+data[i].age+'</h2><h2>性别：'+data[i].sex+'</h2>'
+                }
+          
+                $('#msg').html(str)
+            },
+            error:(err)=>{
+                console.log('失败')
+                console.log(err)
+            }
+
+        })
+    }
+    $('button').on('click',getData)
+</script>

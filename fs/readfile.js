@@ -6,11 +6,11 @@ http.createServer(function(req,res){
     //添加响应头
 
     //这是针对 text/html格式的处理
-    res.writeHead(200,{'Content-type':'text/html;charset=utf-8'})
+    // res.writeHead(200,{'Content-type':'text/html;charset=utf-8'})
     
     //这是针对图片的
     //清楚 文件的格式或者数据类型，然后设置响应头   
-    // res.writeHead(200,{'Content-type':'image/jpg'})
+    res.writeHead(200,{'Content-type':'image/jpg'})
     //不在处理小图标的请求
     if(req.url=='/favicon.ico'){
         return;
@@ -27,17 +27,20 @@ http.createServer(function(req,res){
     //参数3： 返回函数，把读取的文件返回
 
     //读取 txt  
-    fs.readFile('./text.txt','utf8',(err,data)=>{
-        console.log(data)
-       res.end(data)
-    })
+    // fs.readFile('./text.txt','utf8',(err,data)=>{
+    //     console.log(data)
+    //    res.end(data)
+    // })
 
     //读取图片
     // fs.readFile('./card_xxx1214_09.jpg',(err,data)=>{
-    //     console.log(data)
-    //     res.end(data)
+        // console.log(data)
+    //     res.write('<h1>'+data+'</h1>')
     // })
-
+    fs.readFile('./logo.png',(err,data)=>{
+        // console.log(data)
+        res.end(data)
+    })
     //读取网页
     // fs.readFile('./index.html',(err,data)=>{
     //     res.end(data)
